@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Favourite Locations-->
+        <scene sceneID="uWF-Cs-5ek">
+            <objects>
+                <viewController storyboardIdentifier="FavouriteLocations" id="gl4-DU-d0A" customClass="FavouriteLocations" customModule="WeatherAlert" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hEr-lp-4HZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="kkg-uj-VE0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r9S-bU-xYS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MnH-ar-Acx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4pF-Wq-f6r">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4pF-Wq-f6r" id="9pO-Eu-W33">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gl4-DU-d0A" id="jWL-Sm-sA2"/>
+                                    <outlet property="delegate" destination="gl4-DU-d0A" id="b8b-Lo-9GP"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MnH-ar-Acx" firstAttribute="top" secondItem="r9S-bU-xYS" secondAttribute="top" id="1to-VL-4Ry"/>
+                            <constraint firstItem="kkg-uj-VE0" firstAttribute="top" secondItem="MnH-ar-Acx" secondAttribute="bottom" id="S6Z-1b-Hd6"/>
+                            <constraint firstItem="MnH-ar-Acx" firstAttribute="leading" secondItem="r9S-bU-xYS" secondAttribute="leading" id="c6v-jd-jRE"/>
+                            <constraint firstAttribute="trailing" secondItem="MnH-ar-Acx" secondAttribute="trailing" id="rph-nC-bnK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="MnH-ar-Acx" id="2z3-2Y-eSq"/>
+                        <outlet property="view" destination="r9S-bU-xYS" id="KtZ-jP-sE2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sf5-KZ-u9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292" y="351"/>
+        </scene>
+    </scenes>
+</document>
