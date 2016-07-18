@@ -21,6 +21,7 @@ class FavouriteLocations: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var presenter: FavouriteLocationPresenter?
+    private let cellIdentifier = "LocationCellIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class FavouriteLocations: UIViewController {
     }
     
     func addLocationAction() {
-        
+        presenter?.didSelectAddFavouriteLocation()
     }
 }
 
@@ -44,7 +45,12 @@ extension FavouriteLocations: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("", forIndexPath: indexPath)
+        return tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
     }
 }
 

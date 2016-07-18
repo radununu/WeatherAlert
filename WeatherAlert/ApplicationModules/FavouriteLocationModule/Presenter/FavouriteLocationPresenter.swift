@@ -20,7 +20,7 @@ class FavouriteLocationPresenter {
 
 extension FavouriteLocationPresenter: FavouriteOutputProtocol {
     func didSelectAddFavouriteLocation() {
-        
+        router.addFavouriteLocation()
     }
     
     func didSelectForWindDetailsLocation(location: LocationModel) {
