@@ -31,6 +31,8 @@ class FavouriteLocations: UIViewController {
     private func configureView() {
         let addLocationItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addLocationAction))
         navigationItem.rightBarButtonItem = addLocationItem
+        title = "Weather Locations"
+        self.tableView.tableFooterView = UIView()
     }
     
     func addLocationAction() {

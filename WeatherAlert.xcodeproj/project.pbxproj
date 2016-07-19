@@ -12,17 +12,20 @@
 		0C14560C1D3D4E9B0001C7F4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C1456091D3D4E9B0001C7F4 /* Info.plist */; };
 		0C1456131D3D52790001C7F4 /* FavouriteLocations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C1456121D3D52790001C7F4 /* FavouriteLocations.storyboard */; };
 		0C1456151D3D528C0001C7F4 /* FavouriteLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1456141D3D528C0001C7F4 /* FavouriteLocations.swift */; };
-		0C1456181D3D63EC0001C7F4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1456171D3D63EC0001C7F4 /* Location.swift */; };
 		0C14561A1D3D64360001C7F4 /* FavouriteLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1456191D3D64360001C7F4 /* FavouriteLocationInteractor.swift */; };
 		0C14561C1D3D645B0001C7F4 /* FavouriteLocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14561B1D3D645B0001C7F4 /* FavouriteLocationPresenter.swift */; };
 		0C14561E1D3D648F0001C7F4 /* FavouriteLocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14561D1D3D648F0001C7F4 /* FavouriteLocationRouter.swift */; };
 		0C1456211D3D6A790001C7F4 /* ApplicationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1456201D3D6A790001C7F4 /* ApplicationFlow.swift */; };
 		0C1456241D3D6BBF0001C7F4 /* Storyboard+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1456231D3D6BBF0001C7F4 /* Storyboard+Helper.swift */; };
 		0CA282171D3D772100515A60 /* AddLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA282161D3D772100515A60 /* AddLocation.storyboard */; };
-		0CA282191D3D774200515A60 /* AddLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA282181D3D774200515A60 /* AddLocation.swift */; };
 		0CA2821B1D3D788B00515A60 /* AddLocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA2821A1D3D788B00515A60 /* AddLocationRouter.swift */; };
+		278509DA1D3E0B810048330E /* LocationSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278509D91D3E0B810048330E /* LocationSearchInteractor.swift */; };
+		278509DC1D3E0B8D0048330E /* LocationSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278509DB1D3E0B8D0048330E /* LocationSearchPresenter.swift */; };
+		278509E21D3E51A90048330E /* AddLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278509E11D3E51A90048330E /* AddLocation.swift */; };
+		278509E51D3E539E0048330E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278509E41D3E539E0048330E /* Location.swift */; };
 		279818931D3D238500A1A212 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279818921D3D238500A1A212 /* AppDelegate.swift */; };
 		279818B31D3D238500A1A212 /* WeatherAlertUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279818B21D3D238500A1A212 /* WeatherAlertUITests.swift */; };
+		27A6CB971D3E9F24002ECE88 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A6CB961D3E9F24002ECE88 /* NetworkLayer.swift */; };
 		66DBE26DE85C56B3774E493E /* Pods_WeatherAlertUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10854C870D30357DEB4F96F9 /* Pods_WeatherAlertUITests.framework */; };
 		8B055F554AF25D12C749907E /* Pods_WeatherAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848CCE111C505AB103413145 /* Pods_WeatherAlert.framework */; };
 		8DCAF05165BAE1AFBC11F548 /* Pods_WeatherAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB9546D940CD6FB7624CBAB /* Pods_WeatherAlertTests.framework */; };
@@ -51,16 +54,18 @@
 		0C1456091D3D4E9B0001C7F4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C1456121D3D52790001C7F4 /* FavouriteLocations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteLocations.storyboard; sourceTree = "<group>"; };
 		0C1456141D3D528C0001C7F4 /* FavouriteLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteLocations.swift; sourceTree = "<group>"; };
-		0C1456171D3D63EC0001C7F4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		0C1456191D3D64360001C7F4 /* FavouriteLocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteLocationInteractor.swift; sourceTree = "<group>"; };
 		0C14561B1D3D645B0001C7F4 /* FavouriteLocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteLocationPresenter.swift; sourceTree = "<group>"; };
 		0C14561D1D3D648F0001C7F4 /* FavouriteLocationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteLocationRouter.swift; sourceTree = "<group>"; };
 		0C1456201D3D6A790001C7F4 /* ApplicationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationFlow.swift; sourceTree = "<group>"; };
 		0C1456231D3D6BBF0001C7F4 /* Storyboard+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+Helper.swift"; sourceTree = "<group>"; };
 		0CA282161D3D772100515A60 /* AddLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddLocation.storyboard; sourceTree = "<group>"; };
-		0CA282181D3D774200515A60 /* AddLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocation.swift; sourceTree = "<group>"; };
 		0CA2821A1D3D788B00515A60 /* AddLocationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationRouter.swift; sourceTree = "<group>"; };
 		10854C870D30357DEB4F96F9 /* Pods_WeatherAlertUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAlertUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		278509D91D3E0B810048330E /* LocationSearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchInteractor.swift; sourceTree = "<group>"; };
+		278509DB1D3E0B8D0048330E /* LocationSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchPresenter.swift; sourceTree = "<group>"; };
+		278509E11D3E51A90048330E /* AddLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocation.swift; sourceTree = "<group>"; };
+		278509E41D3E539E0048330E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2798188F1D3D238500A1A212 /* WeatherAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279818921D3D238500A1A212 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		279818A31D3D238500A1A212 /* WeatherAlertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAlertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +73,7 @@
 		279818AE1D3D238500A1A212 /* WeatherAlertUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAlertUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		279818B21D3D238500A1A212 /* WeatherAlertUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAlertUITests.swift; sourceTree = "<group>"; };
 		279818B41D3D238500A1A212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27A6CB961D3E9F24002ECE88 /* NetworkLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		3F139917E21370EA2F0EBF90 /* Pods-WeatherAlertUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAlertUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherAlertUITests/Pods-WeatherAlertUITests.release.xcconfig"; sourceTree = "<group>"; };
 		74B346EEEA43FFF804D2E8D8 /* Pods-WeatherAlertTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAlertTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherAlertTests/Pods-WeatherAlertTests.release.xcconfig"; sourceTree = "<group>"; };
 		848CCE111C505AB103413145 /* Pods_WeatherAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +134,6 @@
 		0C14560D1D3D524C0001C7F4 /* FavouriteLocationModule */ = {
 			isa = PBXGroup;
 			children = (
-				0C1456161D3D63DD0001C7F4 /* Entities */,
 				0C14560E1D3D524C0001C7F4 /* Interactor */,
 				0C14560F1D3D524C0001C7F4 /* Presenter */,
 				0C1456101D3D524C0001C7F4 /* Router */,
@@ -170,14 +175,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0C1456161D3D63DD0001C7F4 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				0C1456171D3D63EC0001C7F4 /* Location.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 		0C14561F1D3D6A5F0001C7F4 /* ApplicationFLow */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,36 +191,16 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		0CA282101D3D73B200515A60 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		0CA282111D3D770300515A60 /* LocationSearchModule */ = {
 			isa = PBXGroup;
 			children = (
-				0CA282121D3D770300515A60 /* Interactor */,
-				0CA282131D3D770300515A60 /* Presenter */,
+				278509E31D3E539E0048330E /* Entities */,
+				278509D71D3E0B710048330E /* Interactor */,
+				278509D81D3E0B710048330E /* Presenter */,
 				0CA282141D3D770300515A60 /* Router */,
 				0CA282151D3D770300515A60 /* View */,
 			);
 			path = LocationSearchModule;
-			sourceTree = "<group>";
-		};
-		0CA282121D3D770300515A60 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		0CA282131D3D770300515A60 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		0CA282141D3D770300515A60 /* Router */ = {
@@ -237,10 +214,34 @@
 		0CA282151D3D770300515A60 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				278509E11D3E51A90048330E /* AddLocation.swift */,
 				0CA282161D3D772100515A60 /* AddLocation.storyboard */,
-				0CA282181D3D774200515A60 /* AddLocation.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		278509D71D3E0B710048330E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				278509D91D3E0B810048330E /* LocationSearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		278509D81D3E0B710048330E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				278509DB1D3E0B8D0048330E /* LocationSearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		278509E31D3E539E0048330E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				278509E41D3E539E0048330E /* Location.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		279818861D3D238500A1A212 = {
@@ -271,7 +272,7 @@
 				0C14561F1D3D6A5F0001C7F4 /* ApplicationFLow */,
 				0C1456041D3D4E660001C7F4 /* ApplicationModules */,
 				279818921D3D238500A1A212 /* AppDelegate.swift */,
-				0CA282101D3D73B200515A60 /* Network */,
+				27A6CB951D3E9F24002ECE88 /* Network */,
 				0C1456221D3D6BB20001C7F4 /* Helpers */,
 				0C1456051D3D4E9B0001C7F4 /* Resources */,
 			);
@@ -293,6 +294,14 @@
 				279818B41D3D238500A1A212 /* Info.plist */,
 			);
 			path = WeatherAlertUITests;
+			sourceTree = "<group>";
+		};
+		27A6CB951D3E9F24002ECE88 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				27A6CB961D3E9F24002ECE88 /* NetworkLayer.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		EBDD2C5C3A9EE81DFB7676FB /* Frameworks */ = {
@@ -581,16 +590,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CA282191D3D774200515A60 /* AddLocation.swift in Sources */,
 				0C1456151D3D528C0001C7F4 /* FavouriteLocations.swift in Sources */,
-				0C1456181D3D63EC0001C7F4 /* Location.swift in Sources */,
+				278509DA1D3E0B810048330E /* LocationSearchInteractor.swift in Sources */,
 				279818931D3D238500A1A212 /* AppDelegate.swift in Sources */,
+				27A6CB971D3E9F24002ECE88 /* NetworkLayer.swift in Sources */,
 				0C14561C1D3D645B0001C7F4 /* FavouriteLocationPresenter.swift in Sources */,
 				0C14561A1D3D64360001C7F4 /* FavouriteLocationInteractor.swift in Sources */,
 				0C14561E1D3D648F0001C7F4 /* FavouriteLocationRouter.swift in Sources */,
+				278509E51D3E539E0048330E /* Location.swift in Sources */,
 				0CA2821B1D3D788B00515A60 /* AddLocationRouter.swift in Sources */,
+				278509E21D3E51A90048330E /* AddLocation.swift in Sources */,
 				0C1456241D3D6BBF0001C7F4 /* Storyboard+Helper.swift in Sources */,
 				0C1456211D3D6A790001C7F4 /* ApplicationFlow.swift in Sources */,
+				278509DC1D3E0B8D0048330E /* LocationSearchPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

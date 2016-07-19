@@ -24,7 +24,7 @@ class FavouriteLocationRouter {
         return presenter
     }
     
-    func addFavouriteLocation() {
-        
+    func addFavouriteLocationIn(viewInput: UIViewController) {
+        AddLocationRouter().presentSearchLocationIn(viewInput)
     }
 }

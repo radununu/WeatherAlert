@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import UIKit
 
 class FavouriteLocationPresenter {
     let router: FavouriteLocationRouter
@@ -20,7 +20,8 @@ class FavouriteLocationPresenter {
 
 extension FavouriteLocationPresenter: FavouriteOutputProtocol {
     func didSelectAddFavouriteLocation() {
-        router.addFavouriteLocation()
+        guard let view = inputView as? UIViewController else { return }
+        router.addFavouriteLocationIn(view)
     }
     
     func didSelectForWindDetailsLocation(location: LocationModel) {
