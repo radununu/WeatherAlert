@@ -16,6 +16,10 @@ class FavouriteLocationPresenter {
     init(router: FavouriteLocationRouter) {
         self.router = router
     }
+    
+    func didLoadView() {
+        interactor?.fetchFavouritesLocations()
+    }
 }
 
 extension FavouriteLocationPresenter: FavouriteOutputProtocol {
@@ -24,7 +28,7 @@ extension FavouriteLocationPresenter: FavouriteOutputProtocol {
         router.addFavouriteLocationIn(view)
     }
     
-    func didSelectForWindDetailsLocation(location: LocationModel) {
-        
+    func didSelectForWindDetailsLocation(location: FavouriteLocation) {
+        router.showDetailsForecastWindFor(location)
     }
 }

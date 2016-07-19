@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol UpdateLocationList: class {
+    func updateLocations()
+}
+
 class LocationSearchPresenter {
     weak var viewInput: LocationSearchInput?
     var router: AddLocationRouter

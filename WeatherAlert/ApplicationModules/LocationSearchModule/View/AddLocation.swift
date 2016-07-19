@@ -44,10 +44,11 @@ extension AddLocation {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        presenter?.interactor?.saveSelectedLocation(locations[indexPath.row])
     }
 }
 
-extension AddLocation: UISearchResultsUpdating, UISearchBarDelegate {
+extension AddLocation: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if let searchedPlace = searchController.searchBar.text {

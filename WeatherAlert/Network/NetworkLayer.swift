@@ -16,7 +16,14 @@ class WeatherNetworkLayer {
 
     
     func searchForCityName(name: String, completionBlock:((error: NSError?, result: AnyObject?) -> ())) {
-        let methodForApiRequest = String(format: "/find?q=%@&type=like&mode=json", name.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.whitespaceCharacterSet())!)
+        let methodForApiRequest = String(format: "/find?q=%@", name.stringByReplacingOccurrencesOfString(" ", withString: ""))
+        callApiWith(methodForApiRequest) { (error, result) in
+            completionBlock(error: error, result: result)
+        }
+    }
+    
+    func getForecastDetailsFor(locationName: String, completionBlock:((error: NSError?, result: AnyObject?) -> ())) {
+        let methodForApiRequest = String(format: "/forecast?q=%@",locationName.stringByReplacingOccurrencesOfString(" ", withString: ""))
         callApiWith(methodForApiRequest) { (error, result) in
             completionBlock(error: error, result: result)
         }

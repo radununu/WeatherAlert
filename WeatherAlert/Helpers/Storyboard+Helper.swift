@@ -27,6 +27,7 @@ extension UIStoryboard {
     enum Storyboard: String {
         case FavouriteLocations
         case AddLocation
+        case WindForecastDetailView
     }
     
     convenience init(_ storyboard: Storyboard) {
