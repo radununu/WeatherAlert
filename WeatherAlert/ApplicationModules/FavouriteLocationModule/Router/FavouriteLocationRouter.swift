@@ -17,7 +17,7 @@ class FavouriteLocationRouter {
         presenter.inputView = favouriteVC
         favouriteVC.presenter = presenter
         rootNavigation = UINavigationController(rootViewController: favouriteVC)
-        return rootNavigation!
+        return rootNavigation ?? UINavigationController ()
     }
     
     private func favouritePresenter() -> FavouriteLocationPresenter {

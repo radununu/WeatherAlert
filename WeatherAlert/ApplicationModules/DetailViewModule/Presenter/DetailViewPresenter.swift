@@ -28,10 +28,11 @@ class DetailViewPresenter {
         var unitDay: Int?
         var forecastDataNeeded = [ForecastWindModel]()
         for model in forecastList {
-            let day: Int = dateHelper.dateComponents(dateHelper.dateValueFromString((model["dt_txt"] as! String))).weekday
-            if day == 0 || day != unitDay {
+            guard let stringDate = model["dt_txt"] as? String else { continue }
+            let dayIndex = dateHelper.dayIndexFromStringDate(stringDate)
+            if dayIndex == 0 || dayIndex != unitDay {
                 forecastDataNeeded.append(ForecastWindModel(responseObject: model))
-                unitDay = day
+                unitDay = dayIndex
             }
         }
         viewInput?.showFetchedForecastDetails(forecastDataNeeded)

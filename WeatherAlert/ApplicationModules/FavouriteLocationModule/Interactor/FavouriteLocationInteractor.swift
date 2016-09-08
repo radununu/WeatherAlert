@@ -20,10 +20,8 @@ class FavouriteLocationInteractor {
     
     func fetchFavouritesLocations() {
         let fetchRequest = NSFetchRequest(entityName: locationEnetityName)
-        do {
-            if let locations = try coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest) as? [FavouriteLocation] {
-                presenter?.inputView?.loadFavouritesLocations(locations)
-            }
-        } catch {}
+        guard let result = try? coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest),
+            let locations = result as? [FavouriteLocation] else { return }
+        presenter?.inputView?.loadFavouritesLocations(locations)
     }
 }
