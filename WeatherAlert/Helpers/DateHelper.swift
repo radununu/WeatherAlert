@@ -8,10 +8,19 @@
 
 import UIKit
 
+enum WeekDays: Int {
+    case Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+}
 
 class DateHelper {
+    func dayIndexFromStringDate(date: String) -> Int {
+        return dateComponents(dateValueFromString(date)).weekday
+    }
+    
     func dayStringByDate(date: NSDate) -> String {
-        return DaysOfWeek(rawValue: dateComponents(date).day)!.stringValue()
+        let weekDayIndex = dateComponents(date).weekday
+        guard let day = WeekDays(rawValue: weekDayIndex - 1) else { return String() }
+        return String(day)
     }
     
     func dateValueFromString(date: String) -> NSDate {
@@ -27,7 +36,6 @@ class DateHelper {
     
     func dateComponents(date: NSDate) -> NSDateComponents {
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        let components: NSDateComponents = calendar!.components(.Weekday, fromDate: date)
-        return components
+        return calendar?.components(.Weekday, fromDate: date) ?? NSDateComponents()
     }
 }

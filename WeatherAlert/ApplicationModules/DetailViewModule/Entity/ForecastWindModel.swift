@@ -8,14 +8,6 @@
 
 import Foundation
 
-enum DaysOfWeek: Int {
-    case Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
-    func stringValue() -> String {
-        let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-        return daysOfWeek[self.rawValue]
-    }
-}
-
 struct ForecastWindModel {
     let degrees: Double
     let speed: Float
@@ -44,7 +36,6 @@ struct ForecastWindModel {
     }
     
     func weekDay() -> String {
-        let weekDay = dateHelper.dateComponents(dateValue).weekday
-        return DaysOfWeek(rawValue: weekDay - 1)!.stringValue()
+        return dateHelper.dayStringByDate(dateValue)
     }
 }
