@@ -9,11 +9,11 @@
 import UIKit
 
 protocol FavouriteInputProtocol: class {
-    func loadFavouritesLocations(locations: [FavouriteLocation])
+    func loadFavouritesLocations(_ locations: [FavouriteLocation])
 }
 
 protocol FavouriteOutputProtocol: class {
-    func didSelectForWindDetailsLocation(location: FavouriteLocation)
+    func didSelectForWindDetailsLocation(_ location: FavouriteLocation)
     func didSelectAddFavouriteLocation()
 }
 
@@ -21,8 +21,8 @@ class FavouriteLocations: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var presenter: FavouriteLocationPresenter?
-    private let cellIdentifier = "LocationCellIdentifier"
-    private var favouriteLocations = [FavouriteLocation]()
+    fileprivate let cellIdentifier = "LocationCellIdentifier"
+    fileprivate var favouriteLocations = [FavouriteLocation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +30,8 @@ class FavouriteLocations: UIViewController {
         configureView()
     }
 
-    private func configureView() {
-        let addLocationItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addLocationAction))
+    fileprivate func configureView() {
+        let addLocationItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addLocationAction))
         navigationItem.rightBarButtonItem = addLocationItem
         title = "Weather Locations"
         self.tableView.tableFooterView = UIView()
@@ -44,24 +44,24 @@ class FavouriteLocations: UIViewController {
 
 extension FavouriteLocations: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favouriteLocations.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         cell.textLabel?.text = favouriteLocations[indexPath.row].name
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         presenter?.didSelectForWindDetailsLocation(favouriteLocations[indexPath.row])
     }
 }
 
 extension FavouriteLocations: FavouriteInputProtocol {
-    func loadFavouritesLocations(locations: [FavouriteLocation]) {
+    func loadFavouritesLocations(_ locations: [FavouriteLocation]) {
         self.favouriteLocations = locations
         self.tableView.reloadData()
     }

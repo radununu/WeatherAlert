@@ -14,7 +14,7 @@ protocol StoryboardIdentifiable {
 
 extension StoryboardIdentifiable where Self: UIViewController {
     static var storyboardIdentifier: String {
-        return String(self)
+        return String(describing: self)
     }
 }
 
@@ -34,8 +34,8 @@ extension UIStoryboard {
         self.init(name: storyboard.rawValue, bundle: nil)
     }
     
-    func instantiateViewController<T: UIViewController where T: StoryboardIdentifiable>(_: T.Type? = nil) -> T {
-        let optionalViewController = self.instantiateViewControllerWithIdentifier(T.storyboardIdentifier)
+    func instantiateViewController<T: UIViewController>(_: T.Type? = nil) -> T where T: StoryboardIdentifiable {
+        let optionalViewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier)
         
         guard let viewController = optionalViewController as? T  else {
             fatalError("Couldn’t instantiate view controller with identifier \(T.storyboardIdentifier) ")

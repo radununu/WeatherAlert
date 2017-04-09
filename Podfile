@@ -5,6 +5,8 @@
 
 target ‘WeatherAlert’ do
     pod 'Alamofire'
+    pod "PromiseKit", "~> 4.0"
+    pod "PromiseKit/Alamofire"
     
     target 'WeatherAlertTests' do
         inherit! :search_paths

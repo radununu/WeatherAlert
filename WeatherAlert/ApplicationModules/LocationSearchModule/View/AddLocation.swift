@@ -9,16 +9,16 @@
 import UIKit
 
 protocol LocationSearchInput: class {
-    func showLocationList(list: [LocationModel])
+    func showLocationList(_ list: [LocationModel])
 }
 
 protocol LocationSearchOutput: class {
-    func didSelectSearchedLocation(location: LocationModel)
+    func didSelectSearchedLocation(_ location: LocationModel)
 }
 
 class AddLocation: UITableViewController {
-    private let reuseIdentifierCell = "reuseIdentifierCell"
-    private var locations = [LocationModel]()
+    fileprivate let reuseIdentifierCell = "reuseIdentifierCell"
+    fileprivate var locations = [LocationModel]()
     var presenter: LocationSearchPresenter?
     
     override func viewDidLoad() {
@@ -28,29 +28,29 @@ class AddLocation: UITableViewController {
 
 extension AddLocation {
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifierCell, forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath)
         cell.textLabel?.text = locations[indexPath.row].autoCompleteName()
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         presenter?.interactor?.saveSelectedLocation(locations[indexPath.row])
     }
 }
 
 extension AddLocation: UISearchResultsUpdating {
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         if let searchedPlace = searchController.searchBar.text {
           presenter?.interactor?.searchCityByName(searchedPlace)
         }
@@ -58,7 +58,7 @@ extension AddLocation: UISearchResultsUpdating {
 }
 
 extension AddLocation: LocationSearchInput {
-    func showLocationList(list: [LocationModel]) {
+    func showLocationList(_ list: [LocationModel]) {
         self.locations = list
         self.tableView.reloadData()
     }

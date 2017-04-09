@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ForecastDetailsViewInput: class {
-    func showFetchedForecastDetails(forecastDetails: [ForecastWindModel])
+    func showFetchedForecastDetails(_ forecastDetails: [ForecastWindModel])
 }
 
 
@@ -19,7 +19,7 @@ class WindForecastDetailView: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var windForecastByDays = [ForecastWindModel]()
     var presenter: DetailViewPresenter?
-    private let reuseIdentifierCell = "WindForecastCellIdentifier"
+    fileprivate let reuseIdentifierCell = "WindForecastCellIdentifier"
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -31,34 +31,34 @@ class WindForecastDetailView: UIViewController {
         presenter?.getDataFromAPI()
     }
     
-    func customizeHeaderViewFor(model: ForecastWindModel) {
-        self.spiner.transform = CGAffineTransformMakeRotation(CGFloat(DegreesHelper().degreesToRadians(model.degrees)))
+    func customizeHeaderViewFor(_ model: ForecastWindModel) {
+        self.spiner.transform = CGAffineTransform(rotationAngle: CGFloat(DegreesHelper().degreesToRadians(model.degrees)))
         self.windSpeedLabel.text = model.formattedSpeed()
     }
 }
 
 extension WindForecastDetailView: UITableViewDelegate, UITableViewDataSource {
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return windForecastByDays.count - 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifierCell, forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath)
         cell.textLabel?.text = windForecastByDays[indexPath.row].weekDay()
         cell.detailTextLabel?.text = windForecastByDays[indexPath.row].formattedSpeed()
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         customizeHeaderViewFor(windForecastByDays[indexPath.row])
     }
 
 }
 
 extension WindForecastDetailView: ForecastDetailsViewInput {
-    func showFetchedForecastDetails(forecastDetails: [ForecastWindModel]) {
+    func showFetchedForecastDetails(_ forecastDetails: [ForecastWindModel]) {
         self.windForecastByDays = forecastDetails
         self.tableView.reloadData()
         if windForecastByDays.count > 0 {

@@ -21,7 +21,7 @@ class LocationSearchPresenter {
         self.router = router
     }
     
-    func unpackResponse(response: AnyObject) {
+    func unpackResponse(_ response: AnyObject) {
         if let list = response["list"] as? [[String: AnyObject]] {
             let unpackedList = list.map({ (model) -> LocationModel in
                 let name: String = (model["name"] as? String) ?? ""
@@ -34,7 +34,7 @@ class LocationSearchPresenter {
 }
 
 extension LocationSearchPresenter: LocationSearchOutput {
-    func didSelectSearchedLocation(location: LocationModel) {
+    func didSelectSearchedLocation(_ location: LocationModel) {
         
     }
 }

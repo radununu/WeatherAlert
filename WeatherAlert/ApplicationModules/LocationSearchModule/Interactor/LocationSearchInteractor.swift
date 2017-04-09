@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import PromiseKit
 
 class LocationSearchInteractor {
     weak var presenter: LocationSearchPresenter?
@@ -17,19 +18,27 @@ class LocationSearchInteractor {
         self.presenter = presenter
     }
     
-    func searchCityByName(name: String) {
-        network.searchForCityName(name) { (error, result) in
-            if let unrwappedResponse = result {
-                self.presenter?.unpackResponse(unrwappedResponse)
-            }
+    func searchCityByName(_ name: String) {
+        
+        network.getListOfCities(by: name).then { data in
+           print("Response______  \(data)")
+        }.catch { error in
+            print("We have an error ____ \(error)")
         }
+        
+          print(network.getListOfCities(by: name))
+//        network.searchForCityName(name) { (error, result) in
+//            if let unrwappedResponse = result {
+//                self.presenter?.unpackResponse(unrwappedResponse)
+//            }
+//        }
     }
     
-    func saveSelectedLocation(location: LocationModel) {
-           if let newEntity =  NSEntityDescription.entityForName("FavouriteLocation",
-                                                                 inManagedObjectContext:coreDataStack.managedObjectContext) {
+    func saveSelectedLocation(_ location: LocationModel) {
+           if let newEntity =  NSEntityDescription.entity(forEntityName: "FavouriteLocation",
+                                                                 in:coreDataStack.managedObjectContext) {
             let locationObject = NSManagedObject(entity: newEntity,
-                                           insertIntoManagedObjectContext: coreDataStack.managedObjectContext)
+                                           insertInto: coreDataStack.managedObjectContext)
             locationObject.setValue(location.locationName, forKey: "name")
             do {
                 try coreDataStack.managedObjectContext.save()

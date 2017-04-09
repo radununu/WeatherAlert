@@ -10,7 +10,7 @@ import UIKit
 
 class ApplicationFlow: NSObject {
     
-    func addApplicationInWindow(window: UIWindow) {
+    func addApplicationInWindow(_ window: UIWindow) {
         window.rootViewController = FavouriteLocationRouter().getFavouriteLocationsModule()
         window.makeKeyAndVisible()
     }

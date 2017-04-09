@@ -24,7 +24,7 @@ class DetailViewPresenter {
         interactor?.fetchForecastDataFor(location)
     }
     
-    func unpackResponseFrom(forecastList: [[String: AnyObject]]) {
+    func unpackResponseFrom(_ forecastList: [[String: AnyObject]]) {
         var unitDay: Int?
         var forecastDataNeeded = [ForecastWindModel]()
         for model in forecastList {

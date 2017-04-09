@@ -11,7 +11,7 @@ import CoreData
 
 class FavouriteLocationInteractor {
     weak var presenter: FavouriteLocationPresenter?
-    private let locationEnetityName = "FavouriteLocation"
+    fileprivate let locationEnetityName = "FavouriteLocation"
     let coreDataStack = CoreDataStack.sharedInstance
     
     init(presenter: FavouriteLocationPresenter) {
@@ -19,8 +19,8 @@ class FavouriteLocationInteractor {
     }
     
     func fetchFavouritesLocations() {
-        let fetchRequest = NSFetchRequest(entityName: locationEnetityName)
-        guard let result = try? coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest),
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: locationEnetityName)
+        guard let result = try? coreDataStack.managedObjectContext.fetch(fetchRequest),
             let locations = result as? [FavouriteLocation] else { return }
         presenter?.inputView?.loadFavouritesLocations(locations)
     }

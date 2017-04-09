@@ -28,7 +28,7 @@ extension FavouriteLocationPresenter: FavouriteOutputProtocol {
         router.addFavouriteLocationIn(view)
     }
     
-    func didSelectForWindDetailsLocation(location: FavouriteLocation) {
+    func didSelectForWindDetailsLocation(_ location: FavouriteLocation) {
         router.showDetailsForecastWindFor(location)
     }
 }

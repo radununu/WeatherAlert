@@ -20,17 +20,17 @@ class FavouriteLocationRouter {
         return rootNavigation ?? UINavigationController ()
     }
     
-    private func favouritePresenter() -> FavouriteLocationPresenter {
+    fileprivate func favouritePresenter() -> FavouriteLocationPresenter {
         let presenter = FavouriteLocationPresenter(router: self)
         presenter.interactor = FavouriteLocationInteractor(presenter: presenter)
         return presenter
     }
     
-    func addFavouriteLocationIn(viewInput: UIViewController) {
+    func addFavouriteLocationIn(_ viewInput: UIViewController) {
         AddLocationRouter().presentSearchLocationIn(viewInput)
     }
     
-    func showDetailsForecastWindFor(location: FavouriteLocation) {
+    func showDetailsForecastWindFor(_ location: FavouriteLocation) {
         if let rootNavigation = rootNavigation {
             DetailViewRouter().pushForecastDetailsOf(location, navigation: rootNavigation)
         }

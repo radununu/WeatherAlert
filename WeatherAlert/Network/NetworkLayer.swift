@@ -8,31 +8,53 @@
 
 import Foundation
 import Alamofire
+import PromiseKit
+
+typealias NetworkResult = Alamofire.Result<[String: AnyObject]>
 
 class WeatherNetworkLayer {
-    private let baseURL = "http://api.openweathermap.org/data/"
-    private let apiVersion = "2.5"
-    private let apiKey = "05b11355ff7c4ea7c52120fefff434ac"
+    fileprivate let baseURL = "http://api.openweathermap.org/data/"
+    fileprivate let apiVersion = "2.5"
+    fileprivate let apiKey = "05b11355ff7c4ea7c52120fefff434ac"
 
     
-    func searchForCityName(name: String, completionBlock:((error: NSError?, result: AnyObject?) -> ())) {
-        let methodForApiRequest = String(format: "/find?q=%@", name.stringByReplacingOccurrencesOfString(" ", withString: ""))
-        callApiWith(methodForApiRequest) { (error, result) in
-            completionBlock(error: error, result: result)
-        }
+    func getListOfCities(by name: String) ->  Promise<Data> {
+        let methodForApiRequest = String(format: "/find?q=%@", name.replacingOccurrences(of: " ", with: ""))
+        return executeRequest(with: methodForApiRequest)
     }
-    
-    func getForecastDetailsFor(locationName: String, completionBlock:((error: NSError?, result: AnyObject?) -> ())) {
-        let methodForApiRequest = String(format: "/forecast?q=%@",locationName.stringByReplacingOccurrencesOfString(" ", withString: ""))
-        callApiWith(methodForApiRequest) { (error, result) in
-            completionBlock(error: error, result: result)
-        }
-    }
-    
-    private func callApiWith(method: String, completionBlock:((error: NSError?, result: AnyObject?) -> ())) {
+
+    fileprivate func executeRequest(with method: String) ->  Promise<Data> {
         let urlString = String(format: "%@%@%@&APPID=%@&lang=en", baseURL, apiVersion, method, apiKey)
-        Alamofire.request(.GET, urlString) .responseJSON { response in
-            completionBlock(error: response.result.error, result: response.result.value)
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        return firstly {
+            Alamofire.request(urlString, method: .get).responseData()
+            }.then(execute: { data in
+               return Promise(value: data)
+            }).always {
+              UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
+    }
+    
+    func searchForCityName(_ name: String, completionBlock:@escaping ((_ error: NSError?, _ result: AnyObject?) -> ())) {
+        let methodForApiRequest = String(format: "/find?q=%@", name.replacingOccurrences(of: " ", with: ""))
+        callApiWith(methodForApiRequest) { (error, result) in
+            completionBlock(error, result)
+        }
+    }
+    
+    func getForecastDetailsFor(_ locationName: String, completionBlock:@escaping ((_ error: NSError?, _ result: AnyObject?) -> ())) {
+        let methodForApiRequest = String(format: "/forecast?q=%@",locationName.replacingOccurrences(of: " ", with: ""))
+        callApiWith(methodForApiRequest) { (error, result) in
+            completionBlock(error, result)
+        }
+    }
+    
+    fileprivate func callApiWith(_ method: String, completionBlock:@escaping ((_ error: NSError?, _ result: AnyObject?) -> ())) {
+        let urlString = String(format: "%@%@%@&APPID=%@&lang=en", baseURL, apiVersion, method, apiKey)
+        Alamofire.request(urlString, method: .get).responseJSON { response in
+            completionBlock(response.result.error as NSError?, response.result.value as AnyObject?)
         }
     }
 

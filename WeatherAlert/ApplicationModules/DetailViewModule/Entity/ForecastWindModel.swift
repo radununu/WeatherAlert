@@ -13,8 +13,8 @@ struct ForecastWindModel {
     let speed: Float
     let date: String
     let dateHelper = DateHelper()
-    var dateValue: NSDate { get { return dateHelper.dateValueFromString(self.date)} }
-    private let speedUnit = "meter/sec"
+    var dateValue: Date { get { return dateHelper.dateValueFromString(self.date)} }
+    fileprivate let speedUnit = "meter/sec"
 
     init(responseObject: [String: AnyObject]) {
         self.date = (responseObject["dt_txt"] as? String) ?? ""

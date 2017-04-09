@@ -9,33 +9,33 @@
 import UIKit
 
 enum WeekDays: Int {
-    case Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+    case sunday, monday, tuesday, wednesday, thursday, friday, saturday
 }
 
 class DateHelper {
-    func dayIndexFromStringDate(date: String) -> Int {
-        return dateComponents(dateValueFromString(date)).weekday
+    func dayIndexFromStringDate(_ date: String) -> Int {
+        return dateComponents(dateValueFromString(date)).weekday!
     }
     
-    func dayStringByDate(date: NSDate) -> String {
+    func dayStringByDate(_ date: Date) -> String {
         let weekDayIndex = dateComponents(date).weekday
-        guard let day = WeekDays(rawValue: weekDayIndex - 1) else { return String() }
-        return String(day)
+        guard let day = WeekDays(rawValue: weekDayIndex! - 1) else { return String() }
+        return String(describing: day)
     }
     
-    func dateValueFromString(date: String) -> NSDate {
-        return dateFormatter.dateFromString(date) ?? NSDate()
+    func dateValueFromString(_ date: String) -> Date {
+        return dateFormatter.date(from: date) ?? Date()
     }
     
-    lazy var dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "UTC")
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter
     }()
     
-    func dateComponents(date: NSDate) -> NSDateComponents {
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        return calendar?.components(.Weekday, fromDate: date) ?? NSDateComponents()
+    func dateComponents(_ date: Date) -> DateComponents {
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        return (calendar as NSCalendar?)?.components(.weekday, from: date) ?? DateComponents()
     }
 }

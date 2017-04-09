@@ -11,7 +11,7 @@ import UIKit
 
 class DetailViewRouter {
  
-    func pushForecastDetailsOf(location: FavouriteLocation, navigation: UINavigationController) {
+    func pushForecastDetailsOf(_ location: FavouriteLocation, navigation: UINavigationController) {
         let view: WindForecastDetailView = UIStoryboard(.WindForecastDetailView).instantiateViewController()
         let presenter = DetailViewPresenter(router: self, location: location)
         presenter.interactor = DetailViewInteractor(presenter: presenter)

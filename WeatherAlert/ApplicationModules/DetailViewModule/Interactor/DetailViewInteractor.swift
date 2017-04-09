@@ -16,7 +16,7 @@ class DetailViewInteractor {
         self.presenter = presenter
     }
     
-    func fetchForecastDataFor(location: FavouriteLocation) {
+    func fetchForecastDataFor(_ location: FavouriteLocation) {
         network.getForecastDetailsFor(location.name) { (error, result) in
             guard let response = result as? [String: AnyObject] else { return }
             if let list = response["list"] as? [[String: AnyObject]] {
