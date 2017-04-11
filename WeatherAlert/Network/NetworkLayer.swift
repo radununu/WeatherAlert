@@ -25,9 +25,7 @@ class WeatherNetworkLayer {
 
     fileprivate func executeRequest(with method: String) ->  Promise<Data> {
         let urlString = String(format: "%@%@%@&APPID=%@&lang=en", baseURL, apiVersion, method, apiKey)
-        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
         return firstly {
             Alamofire.request(urlString, method: .get).responseData()
             }.then(execute: { data in
@@ -44,11 +42,9 @@ class WeatherNetworkLayer {
         }
     }
     
-    func getForecastDetailsFor(_ locationName: String, completionBlock:@escaping ((_ error: NSError?, _ result: AnyObject?) -> ())) {
+    func getForecastDetailsFor(_ locationName: String) -> Promise<Data> {
         let methodForApiRequest = String(format: "/forecast?q=%@",locationName.replacingOccurrences(of: " ", with: ""))
-        callApiWith(methodForApiRequest) { (error, result) in
-            completionBlock(error, result)
-        }
+        return executeRequest(with: methodForApiRequest)
     }
     
     fileprivate func callApiWith(_ method: String, completionBlock:@escaping ((_ error: NSError?, _ result: AnyObject?) -> ())) {

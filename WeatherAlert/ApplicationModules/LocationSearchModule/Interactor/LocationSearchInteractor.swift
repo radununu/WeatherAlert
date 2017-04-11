@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import PromiseKit
+import Alamofire
 
 class LocationSearchInteractor {
     weak var presenter: LocationSearchPresenter?
@@ -19,35 +20,33 @@ class LocationSearchInteractor {
     }
     
     func searchCityByName(_ name: String) {
-        
         network.getListOfCities(by: name).then { data in
-           print("Response______  \(data)")
-        }.catch { error in
-            print("We have an error ____ \(error)")
+            self.presenter?.unpackResponse(data)
+            }.catch { error in
+            print(error)
         }
-        
-          print(network.getListOfCities(by: name))
-//        network.searchForCityName(name) { (error, result) in
-//            if let unrwappedResponse = result {
-//                self.presenter?.unpackResponse(unrwappedResponse)
-//            }
-//        }
     }
     
     func saveSelectedLocation(_ location: LocationModel) {
-           if let newEntity =  NSEntityDescription.entity(forEntityName: "FavouriteLocation",
-                                                                 in:coreDataStack.managedObjectContext) {
-            let locationObject = NSManagedObject(entity: newEntity,
-                                           insertInto: coreDataStack.managedObjectContext)
+        locationManagedObject().then { locationObject in
             locationObject.setValue(location.locationName, forKey: "name")
-            do {
-                try coreDataStack.managedObjectContext.save()
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
-            }
+            }.then { _ in
+                try self.coreDataStack.managedObjectContext.save()
+            }.always {
+                self.presenter?.router.dissmissAndUpdateLocations()
+            }.catch { error in
+                print(error)
         }
-        defer {
-            presenter?.router.dissmissAndUpdateLocations()
+      
+    }
+    
+    fileprivate func locationManagedObject() -> Promise<NSManagedObject> {
+        return Promise<NSManagedObject> { fullfiled, reject in
+            guard let newEntity =  NSEntityDescription.entity(forEntityName: "FavouriteLocation", in:coreDataStack.managedObjectContext) else  {
+                reject(NSError(domain: "Can not get ManagedObject", code: 0, userInfo: ["error": ""]))
+                return
+            }
+            fullfiled(NSManagedObject(entity: newEntity, insertInto: coreDataStack.managedObjectContext))
         }
     }
 }

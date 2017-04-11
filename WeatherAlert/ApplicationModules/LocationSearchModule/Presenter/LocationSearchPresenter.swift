@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 protocol UpdateLocationList: class {
     func updateLocations()
@@ -21,7 +22,10 @@ class LocationSearchPresenter {
         self.router = router
     }
     
-    func unpackResponse(_ response: AnyObject) {
+    func unpackResponse(_ data: Data) {
+        guard let response = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject else {
+            return
+        }
         if let list = response["list"] as? [[String: AnyObject]] {
             let unpackedList = list.map({ (model) -> LocationModel in
                 let name: String = (model["name"] as? String) ?? ""
@@ -31,6 +35,7 @@ class LocationSearchPresenter {
             viewInput?.showLocationList(unpackedList)
         }
     }
+    
 }
 
 extension LocationSearchPresenter: LocationSearchOutput {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 class DetailViewInteractor {
     weak var presenter: DetailViewPresenter?
@@ -17,12 +18,17 @@ class DetailViewInteractor {
     }
     
     func fetchForecastDataFor(_ location: FavouriteLocation) {
-        network.getForecastDetailsFor(location.name) { (error, result) in
-            guard let response = result as? [String: AnyObject] else { return }
-            if let list = response["list"] as? [[String: AnyObject]] {
-                self.presenter?.unpackResponseFrom(list)
-            }
+        network.getForecastDetailsFor(location.name).then { dataObject in
+            return Promise( value: try JSONSerialization.jsonObject(with: dataObject, options: .mutableContainers) as AnyObject)
+            }.then { deserialized in
+                return Promise(value: deserialized as? [String: AnyObject])
+            }.then { response in
+                return Promise(value: response?["list"] as! [[String: AnyObject]])
+            }.then { list in
+              self.presenter?.unpackResponseFrom(list)
+            }.catch { error in
+                print(error)
         }
     }
-    
+   
 }
